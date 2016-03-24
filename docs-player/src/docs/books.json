@@ -1,0 +1,17 @@
+[{
+    "book": "Book one",
+    "url": "book-one",
+    "chapters": [{
+        "title": "Chapter one",
+        "url": "chapter-one",
+        "bookmarks": [{
+            "title": "Bookmark one"
+        }]
+    }, {
+        "title": "Chapter two",
+        "url": "chapter-two",
+        "bookmarks": [{
+            "title": "Bookmark one"
+        }]
+    }]
+}]

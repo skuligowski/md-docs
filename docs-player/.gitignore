@@ -1,0 +1,8 @@
+node_modules
+*.log
+dist/**
+*.orig
+temp/**
+target
+Thumbs.db
+.idea

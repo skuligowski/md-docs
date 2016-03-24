@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl">
+<head>
+	<base href="/">
+	<title>Documentation</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="minimum-scale=1.0, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+
+	<script src="/vendor/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/vendor/angular/1.5.0/angular.min.js"></script>
+	<script src="/vendor/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+	<script src="/vendor/fastclick/1.0.3/fastclick.min.js"></script>
+
+	<script src="/js/docs-player.js"></script>
+</head>
+<body>
+	<%template id="tpl/book" src="app/book.html"%>
+	<%template id="tpl/chapter" src="app/chapter.html"%>
+	<%template id="tpl/empty" src="app/empty.html"%>
+
+	<%include src="app/app.html"%>
+
+	<script>
+		angular.bootstrap(document, ['docsPlayer'], { strictDi: true });
+	</script>
+
+</body>
+</html>

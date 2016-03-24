@@ -1,0 +1,11 @@
+{
+  "name": "md-docs",
+  "version": "0.0.1",
+  "description": "Static documentation generator",
+  "main": "index.js",
+  "author": "Sebastian Kuligowski <sebastian@kuligowski.pl> (http://kuligowski.pl)",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.3.5"
+  }
+}

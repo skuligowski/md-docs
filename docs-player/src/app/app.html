@@ -1,0 +1,10 @@
+<div class="main-view">
+	<div class="sidebar" ng-controller="AppCtrl">
+		<ul class="books">
+			<li book="book" ng-repeat="book in books"></li>
+		</ul>
+	</div>
+	<div class="content">
+		<div ui-view></div>
+	</div>
+</div>

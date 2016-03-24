@@ -1,0 +1,8 @@
+<li>
+	<a href="#" ng-click="selectChapter()">{{chapter.title}}</a>
+	<ul ng-if="expanded">
+		<li ng-repeat="bookmark in chapter.bookmarks">
+			{{bookmark.title}}
+		</li>			
+	</ul>
+</li>
