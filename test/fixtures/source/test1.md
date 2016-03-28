@@ -1,14 +1,7 @@
-
-
-
 ---
-
-title: Some chapter
-url: /some-chapter
-bookmarks:
-    - first-bookmark
-    - second-bookmark
-
+book: Markdown readme
+chapter: Some chapter
+url: /markdown/some-chapter
 ---
 
 
