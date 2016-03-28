@@ -6,6 +6,11 @@
   "author": "Sebastian Kuligowski <sebastian@kuligowski.pl> (http://kuligowski.pl)",
   "license": "MIT",
   "dependencies": {
-    "marked": "^0.3.5"
+    "marked": "^0.3.5",
+    "yamljs": "^0.2.7"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "mocha": "^2.4.5"
   }
 }
