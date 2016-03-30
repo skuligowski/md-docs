@@ -1,5 +1,5 @@
 ---
-book: Markdown readme
+book: Markdown first
 chapter: Some chapter
 url: /markdown/some-chapter
 ---
