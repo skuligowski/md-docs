@@ -7,7 +7,7 @@ var fs = require('fs'),
 it('should add chapter to the book', function (cb) {		
 	var b = bookshelf();
 	b.add('test/fixtures/source/test1.md');
-	b.add('test/fixtures/source/test1.md');
+	b.add('test/fixtures/source/test2.md');
 	b.add('test/fixtures/source/test1.md');
 	cb();	
 });

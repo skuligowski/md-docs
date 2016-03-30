@@ -18,7 +18,7 @@ it('should generate next uniqe ref id', function (cb) {
 	uniqueRefs.unique('The test');
 	uniqueRefs.unique('The test');
 	var ref = uniqueRefs.unique('The test');
-	assert.equal('the-test-3', ref);
+	assert.equal('the-test-4', ref);
 	cb();	
 });
 
@@ -39,7 +39,7 @@ it('should generate next unique refs for different namespaces', function (cb) {
 	uniqueRefs.unique('The second phrase', 'b');
 	var refB = uniqueRefs.unique('The second phrase', 'b');
 	
-	assert.equal('the-first-phrase-1', refA);
-	assert.equal('the-second-phrase-1', refB);
+	assert.equal('the-first-phrase-2', refA);
+	assert.equal('the-second-phrase-2', refB);
 	cb();	
 });
