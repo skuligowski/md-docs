@@ -50,11 +50,11 @@ angular.module('docsPlayer', [
 				chapters = book.chapters;
 			for(var y = 0; y < chapters.length; y++) {
 				var chapter = chapters[y],
-					url = join(book.url, chapter.url);
+					url = chapter.url;
 				chapter.state = 'state'+i+'-'+y;
 				runtimeStates.addState(chapter.state, {
 					url: url,
-					templateUrl: join('docs', book.url, chapter.url, chapter.url + '.html')
+					templateUrl: join('docs', chapter.file)
 				});
 				if (url === $location.url()) {
 					targetState = chapter.state;

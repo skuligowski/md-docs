@@ -1,5 +1,5 @@
 <li>
-	<a href="#" ng-click="toggleExpanded()">{{book.book}}</a>
+	<a href="#" ng-click="toggleExpanded()">{{book.title}}</a>
 	<ul ng-if="expanded">
 		<li chapter="chapter" ng-repeat="chapter in book.chapters"></li>
 	</ul>
