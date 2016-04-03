@@ -3,6 +3,7 @@ node_modules
 dist/**
 *.orig
 temp/**
+test/fixtures/rendered
 target
 Thumbs.db
 .idea
