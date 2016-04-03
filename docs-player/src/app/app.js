@@ -34,11 +34,6 @@ angular.module('docsPlayer', [
 }])
 
 .controller('AppCtrl', ['$scope', 'runtimeStates', '$http', '$location', '$state', function($scope, runtimeStates, $http, $location, $state) {
-	function join() {
-		var args = Array.prototype.slice.call(arguments);		
-		return '/' + args.join('/');
-	}
-
 
 	$http.get('/docs/books.json').then(function(result) {
 		console.log('res')
@@ -54,7 +49,7 @@ angular.module('docsPlayer', [
 				chapter.state = 'state'+i+'-'+y;
 				runtimeStates.addState(chapter.state, {
 					url: url,
-					templateUrl: join('docs', chapter.file)
+					templateUrl: '/docs' + chapter.file
 				});
 				if (url === $location.url()) {
 					targetState = chapter.state;
