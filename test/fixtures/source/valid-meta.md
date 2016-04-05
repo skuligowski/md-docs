@@ -2,12 +2,10 @@
 
 
 ---
+book: b1
+chapter: c1
 
-title: c1
-url: c2
-bookmarks:
-    - a
-    - b
+permalink: /u1
 
 ---
 

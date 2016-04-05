@@ -4,7 +4,7 @@
 --
 
 title: c1
-url: c2
+permalink: c2
 bookmarks:
     - a
     - b

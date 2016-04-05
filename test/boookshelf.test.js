@@ -12,8 +12,8 @@ function readFile(filename) {
 
 it('should add chapter to the book', function (cb) {		
 	var b = bookshelf();
-	b.add(readFile('test/fixtures/source/test1.md'));
-	b.add(readFile('test/fixtures/source/test2.md'));
-	b.add(readFile('test/fixtures/source/test1.md'));
+	b.addChapter(path.resolve('test/fixtures/source/test1.md'));
+	b.addChapter(path.resolve('test/fixtures/source/test2.md'));
+	b.addChapter(path.resolve('test/fixtures/source/test1.md'));
 	cb();	
 });

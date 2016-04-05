@@ -1,7 +1,7 @@
 ---
 book: Markdown first
 chapter: Some chapter
-url: /markdown/some-chapter
+permalink: /markdown/some-chapter
 ---
 
 

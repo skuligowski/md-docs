@@ -36,7 +36,6 @@ angular.module('docsPlayer', [
 .controller('AppCtrl', ['$scope', 'runtimeStates', '$http', '$location', '$state', function($scope, runtimeStates, $http, $location, $state) {
 
 	$http.get('/docs/books.json').then(function(result) {
-		console.log('res')
 		var books = $scope.books = result.data,
 			targetState = null;
 
@@ -45,13 +44,13 @@ angular.module('docsPlayer', [
 				chapters = book.chapters;
 			for(var y = 0; y < chapters.length; y++) {
 				var chapter = chapters[y],
-					url = chapter.url;
+					permalink = chapter.permalink;
 				chapter.state = 'state'+i+'-'+y;
 				runtimeStates.addState(chapter.state, {
-					url: url,
-					templateUrl: '/docs' + chapter.file
+					url: permalink,
+					templateUrl: chapter.fileUrl
 				});
-				if (url === $location.url()) {
+				if (permalink === $location.url()) {
 					targetState = chapter.state;
 				}
 			}
