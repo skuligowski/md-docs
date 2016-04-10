@@ -26,14 +26,13 @@ var gulp = require('gulp'),
 htmlrender.addTemplate('template', '<script id="{{id}}" type="text/ng-template"><%include src="{{src}}"%></script>');
 
 gulp.task('build', function(cb) {
-	runSequence('clean', ['less', 'html', 'assets', 'js', 'docs'], cb);
+	runSequence('clean', ['less', 'html', 'assets', 'js'], cb);
 });
 
 gulp.task('watch', function() {
     gulp.watch('src/css/*.less', ['less']);
     gulp.watch('src/**/*.html', ['html']);
     gulp.watch('src/app/**/*.js', ['js']);
-    gulp.watch('src/docs/**/*', ['docs']);
 });
 
 gulp.task('default', ['build'], function() {
@@ -78,15 +77,9 @@ gulp.task('assets', function() {
 
 gulp.task('js', function() {
 	return gulp.src(['src/app/**/*.js'])
-		//.pipe(uglify())
+		.pipe(uglify())
 		.pipe(concat('docs-player.js'))
 		.pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('docs', function() {
-	return gulp.src(['src/docs/**/*'])
-		//.pipe(uglify())
-		.pipe(gulp.dest('dist/docs'));
 });
 
 gulp.task('clean', function() {
