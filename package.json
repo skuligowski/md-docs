@@ -1,9 +1,13 @@
 {
   "name": "md-docs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Static documentation generator",
   "main": "index.js",
-  "author": "Sebastian Kuligowski <sebastian@kuligowski.pl> (http://kuligowski.pl)",
+  "author": {
+    "name": "Sebastian Kuligowski",
+    "email": "sbastian@kuligowski.pl",
+    "url": "kuligowski.pl"
+  },
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^0.26.7",
