@@ -9,34 +9,30 @@ var browsers = [
 	'bb >= 10'
 ];
 
-var gulp = require('gulp'),
-	less = require('gulp-less'),
-	plumber = require('gulp-plumber'),
-	path = require('path'),
-	cleanCSS = require('gulp-clean-css'),
-	LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-	autoprefixPlugin = new LessPluginAutoPrefix({browsers: browsers}),
-	htmlrender = require('gulp-htmlrender'),
-	del = require('del'),
-	uglify = require('gulp-uglify'),
-	concat = require('gulp-concat'),
-	runSequence = require('run-sequence').use(gulp);
+var gulp = require('gulp'),	
+	path = require('path');	
 
-htmlrender.addTemplate('template', '<script id="{{id}}" type="text/ng-template"><%include src="{{src}}"%></script>');
+gulp.task('default', ['build']);
 
 gulp.task('build', function(cb) {
+	var runSequence = require('run-sequence').use(gulp);
 	runSequence('clean', ['less', 'html', 'assets', 'js'], cb);
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
     gulp.watch('src/css/*.less', ['less']);
     gulp.watch('src/**/*.html', ['html']);
     gulp.watch('src/app/**/*.js', ['js']);
 });
 
-
 gulp.task('less', function() {
-	var cssDir = path.normalize('src/css');
+	var less = require('gulp-less'),
+		plumber = require('gulp-plumber'),
+		cleanCSS = require('gulp-clean-css'),
+		LessPluginAutoPrefix = require('less-plugin-autoprefix'),
+		autoprefixPlugin = new LessPluginAutoPrefix({browsers: browsers}),
+		cssDir = path.normalize('src/css');
+
 	return gulp.src(path.join(cssDir, 'index.less'))
 		.pipe(plumber({
 			errorHandler: function (err) {
@@ -53,6 +49,9 @@ gulp.task('less', function() {
 });
 
 gulp.task('html', function() {
+	var htmlrender = require('gulp-htmlrender');
+	htmlrender.addTemplate('template', '<script id="{{id}}" type="text/ng-template"><%include src="{{src}}"%></script>');
+
 	return gulp.src('src/index.html', {read: false})
 		.pipe(htmlrender.render())
 		.pipe(gulp.dest('dist'));
@@ -65,6 +64,9 @@ gulp.task('assets', function() {
 
 
 gulp.task('js', function() {
+	var uglify = require('gulp-uglify'),
+		concat = require('gulp-concat');
+
 	return gulp.src(['src/app/**/*.js'])
 		.pipe(uglify())
 		.pipe(concat('docs-player.js'))
@@ -72,5 +74,6 @@ gulp.task('js', function() {
 });
 
 gulp.task('clean', function() {
+	var del = require('del');
 	return del('dist');
 });
