@@ -1,7 +1,6 @@
 var express = require('express'),
 	http = require('http'),
 	compress = require('compression')(),
-	path = require('path'),
 	fs = require('fs');
 
 

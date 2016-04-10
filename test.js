@@ -1,7 +1,4 @@
 'use strict';
-var assert = require('assert');
-var mdDocs = require('./');
-var path = require('path');
-var fs = require('fs');
+var docs = require('./index');
 
-
+docs.start('test/**/*.md', 'test/fixtures/rendered2');
