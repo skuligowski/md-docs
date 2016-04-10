@@ -20,7 +20,6 @@ var gulp = require('gulp'),
 	del = require('del'),
 	uglify = require('gulp-uglify'),
 	concat = require('gulp-concat'),
-	nodemon = require('gulp-nodemon'),
 	runSequence = require('run-sequence').use(gulp);
 
 htmlrender.addTemplate('template', '<script id="{{id}}" type="text/ng-template"><%include src="{{src}}"%></script>');
@@ -35,16 +34,6 @@ gulp.task('watch', function() {
     gulp.watch('src/app/**/*.js', ['js']);
 });
 
-gulp.task('default', ['build'], function() {
-	nodemon({
-		script: 'server/server.js',
-		watch: ['server/*.js'],
-		ignore: ['node_modules/**']
-	})
-    .on('start', function() {
-    	gulp.start('watch');
-    });
-});
 
 gulp.task('less', function() {
 	var cssDir = path.normalize('src/css');
