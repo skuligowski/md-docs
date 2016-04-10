@@ -1,4 +1,9 @@
-var marked = require('marked'),
-	fs = require('fs'),
-	contentParser = require('./lib/content-parser');
+var docsServer = require('./server');
+
+
+docsServer.start({
+	playerSrc: 'player/dist',
+	docsSrc: 'test/fixtures/rendered',
+	port: 8000
+});
 
