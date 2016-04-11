@@ -1,5 +1,4 @@
 @import (inline) "../vendor/normalize/4.0.0/normalize.css";
-
 * {
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
@@ -8,12 +7,13 @@
 	font-weight: normal;
 }
 
-body, html {
+body,
+html {
 	height: 100%;
 	font-size: 62.5%;
 	overflow-y: hidden;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
-
 
 .scrollable {
 	overflow-y: auto;
@@ -23,73 +23,15 @@ body, html {
 .main-view {
 	height: 100%;
 	display: flex;
-
-	.sidebar {
-		height: 100%;
-		width: 300px;
-		background: #f9f9f9;
-		padding: 15px;
-
-		a {
-			color: #666;
-		}		
-
-		.books, .chapters, .bookmarks {
-			list-style: none;
-		}
-
-		.book {
-			.title {
-				text-decoration: none;
-				font-size: 1.6rem;
-				line-height: 2.5rem;
-			}
-		}
-
-		.chapter {
-			.title {
-				text-decoration: none;
-				font-size: 1.4rem;
-				margin-left: 20px;
-				line-height: 2.5rem;
-			}
-		}
-
-		.bookmark {
-			.title {
-				text-decoration: none;
-				font-size: 1.3rem;
-				margin-left: 40px;
-				line-height: 2.5rem;
-			}
-		}
-
-		&::-webkit-scrollbar {
-			-webkit-appearance: none;
-    		width: 10px;
-		}
-
-		&::-webkit-scrollbar-button {
-			display: none;
-		}
-
-		&::-webkit-scrollbar-thumb {
-		    min-height: 2rem;
-		    background: #d2d2d2;
-		    background-clip: padding-box;
-		    border: 3px solid #fff;
-		    border-radius: 5px;
-		}
-		
-		&::-webkit-scrollbar-track {
-    		background: #fff;
-		}
-	}
-
 	.content {
 		height: 100%;
 		width: 100%;
-		padding: 15px;
 		font-size: 1.5rem;
+		padding: 15px;
 	}
 }
+
+@import "sidebar.less";
+@import "highlight.less";
+@import "markdown.less";
+

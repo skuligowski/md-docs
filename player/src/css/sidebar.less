@@ -1,0 +1,57 @@
+.sidebar {
+	height: 100%;
+	width: 300px;
+	background: #f9f9f9;
+	padding: 15px;
+	a {
+		color: #666;
+	}
+	.books,
+	.chapters,
+	.bookmarks {
+		list-style: none;
+	}
+	.title {
+		display: block;
+	}
+	.book {
+		.title {
+			text-decoration: none;
+			font-size: 1.6rem;
+			line-height: 2.5rem;
+		}
+	}
+	.chapter {
+		.title {
+			text-decoration: none;
+			font-size: 1.4rem;
+			margin-left: 20px;
+			line-height: 2.5rem;
+		}
+	}
+	.bookmark {
+		.title {
+			text-decoration: none;
+			font-size: 1.3rem;
+			margin-left: 40px;
+			line-height: 2.5rem;
+		}
+	}
+	&::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 10px;
+	}
+	&::-webkit-scrollbar-button {
+		display: none;
+	}
+	&::-webkit-scrollbar-thumb {
+		min-height: 2rem;
+		background: #d2d2d2;
+		background-clip: padding-box;
+		border: 3px solid #fff;
+		border-radius: 5px;
+	}
+	&::-webkit-scrollbar-track {
+		background: #fff;
+	}
+}
