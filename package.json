@@ -1,6 +1,6 @@
 {
   "name": "md-docs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Static documentation generator",
   "main": "index.js",
   "author": {
