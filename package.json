@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "Static documentation generator",
   "main": "index.js",
-  "repository": "skuligowski/md-docs",  
+  "repository": "skuligowski/md-docs",
   "author": {
     "name": "Sebastian Kuligowski",
     "email": "sbastian@kuligowski.pl",
@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "chokidar": "^1.4.3",
     "compression": "1.1.x",
     "express": "4.x",
     "fs-extra": "^0.26.7",
