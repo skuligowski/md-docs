@@ -24,7 +24,7 @@ function startDocs(docsSrcPattern, options) {
 		docsServer.start({
 			playerSrc: 'player/dist',
 			docsSrc: docsDestDir,
-			port: 8000
+			port: options.port || 8000
 		});		
 	});
 }
