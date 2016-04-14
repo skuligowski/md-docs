@@ -14,7 +14,7 @@ function createTempOutputDir() {
 }
 
 function startDocs(docsSrcPattern, options) {
-	var docsServer = require('./server'),
+	var docsServer = require('./lib/docs-server'),
 		filesScanner = require('./lib/files-scanner'),
 		options = options || {},
 		docsDestDir = options.docsDestDir || createTempOutputDir();
