@@ -1,5 +1,5 @@
 ---
-book: Markdown second
+book: Markdown first
 chapter: Some chapter
 permalink: /markdown/some-chapter
 ---

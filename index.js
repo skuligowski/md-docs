@@ -1,4 +1,5 @@
-var temp = require('temp');
+var temp = require('temp'),
+	logger = require('./lib/logger');
 
 function createTempOutputDir() {
 	var temp = require('temp').track();
@@ -18,6 +19,7 @@ function startDocs(docsSrcPattern, options) {
 		options = options || {},
 		docsDestDir = options.docsDestDir || createTempOutputDir();
 
+	logger.setDebug(options.debug || false);
 	filesScanner.scan(docsSrcPattern, docsDestDir, function() {
 		docsServer.start({
 			playerSrc: 'player/dist',
