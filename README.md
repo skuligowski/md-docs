@@ -12,7 +12,7 @@ Markdown docs generator
 
 ## Getting Started
 
-This short tutorial will walk you through the easiest way of starting to play with documentation. 
+This short tutorial will walk you through the easiest way of starting to play with the documentation. 
 
 To begin with the default configuration, you should point out source markdown files:
 
@@ -21,7 +21,10 @@ var docs = require('md-docs');
 docs.start('src/**/*.md');
 ```
 
-Each markdown file should start with *the yaml header*. The minimum required set of properties is the name of the book to which the markdown file belongs to and the name of the chapter.
+Each markdown file should start with **the yaml header**. The minimum required set of properties are: 
+
+* the name of the book to which the markdown file belongs 
+* the name of the chapter
 
 ```yaml
 ---
@@ -30,4 +33,4 @@ chapter: Configuration
 ---
 ```
 
-Markdown files that don't have book and chapter properties in the header are omitted.
+Markdown files that don't have book and chapter properties in the header are not included in the book but they are still observed by the watcher.
