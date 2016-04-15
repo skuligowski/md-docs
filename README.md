@@ -21,3 +21,13 @@ var docs = require('md-docs');
 docs.start('src/**/*.md');
 ```
 
+Each markdown file should start with *the yaml header*. The minimum required set of properties is the name of the book to which the markdown file belongs to and the name of the chapter.
+
+```yaml
+---
+book: Installation procedures
+chapter: Configuration
+---
+```
+
+Markdown files that don't have book and chapter properties in the header are omitted.
