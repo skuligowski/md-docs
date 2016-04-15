@@ -17,7 +17,7 @@ This short tutorial will walk you through the easiest way of starting to play wi
 To begin with the default configuration, you should point out source markdown files:
 
 ```javascript
-require('md-docs');
+var docs = require('md-docs');
 docs.start('src/**/*.md');
 ```
 
