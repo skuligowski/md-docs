@@ -1,8 +1,7 @@
-var temp = require('temp'),
-	logger = require('./lib/logger');
+var logger = require('./lib/logger');
 
 function createTempOutputDir() {
-	var temp = require('temp').track();
+	var temp = require('temp').track(),
 		tempDir = temp.mkdirSync('docsplayer');
 
 	process.on('SIGINT', function() {
@@ -13,14 +12,17 @@ function createTempOutputDir() {
 	return tempDir;
 }
 
-function startDocs(docsSrcPattern, options) {
+function startDocs(docsSrcPattern, opts) {
 	var docsServer = require('./lib/docs-server'),
-		filesScanner = require('./lib/files-scanner'),
-		options = options || {},
+		docsBuilder = require('./lib/docs-builder'),
+		options = opts || {},
 		docsDestDir = options.docsDestDir || createTempOutputDir();
 
 	logger.setDebug(options.debug || false);
-	filesScanner.scan(docsSrcPattern, docsDestDir, function() {
+	var builderOptions = {
+		watch: options.watch || false
+	};
+	docsBuilder.build(docsSrcPattern, docsDestDir, builderOptions, function() {
 		docsServer.start({
 			playerSrc: 'player/dist',
 			docsSrc: docsDestDir,
@@ -31,4 +33,4 @@ function startDocs(docsSrcPattern, options) {
 
 module.exports = {
 	start: startDocs
-}
+};

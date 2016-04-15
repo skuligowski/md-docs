@@ -2,8 +2,8 @@
 
 var fs = require('fs'),
 	assert = require('assert'),
-	filesScanner = require('./../lib/files-scanner');
+	docs = require('./../lib/docs-builder');
 
 it('should find all files', function (cb) {		
-	filesScanner.scan('test/**/*.md', 'test/fixtures/rendered', cb);
+	docs.build('test/**/*.md', 'test/fixtures/rendered', {watch: false}, cb);
 });

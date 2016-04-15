@@ -2,5 +2,6 @@
 var docs = require('./index');
 docs.start('test/**/*.md', {
 	debug: true,
-	port: 8001
+	port: 8000,
+	watch: true
 });
