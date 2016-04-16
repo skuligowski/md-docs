@@ -20,15 +20,13 @@ angular.module('docsPlayer', [
   }];
 }])
 
-.config(['$stateProvider', 'fastclickProvider', '$locationProvider', function($stateProvider, fastclickProvider, $locationProvider) {
+.config(['$stateProvider', 'fastclickProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, fastclickProvider, $locationProvider, $urlRouterProvider) {
+	//$urlRouterProvider.otherwise('/');
 	$locationProvider.html5Mode(true);
 	$stateProvider
 	.state('main', {
 		url: '/',
-		templateUrl: 'tpl/empty',
-		onEnter: function() {
-			alert('main');
-		}
+		templateUrl: 'tpl/empty'
 	});
 
 }])
@@ -49,15 +47,23 @@ angular.module('docsPlayer', [
 				runtimeStates.addState(chapter.state, {
 					url: permalink,
 					templateUrl: chapter.fileUrl
-				});
-				if (permalink === $location.url()) {
+				});			
+				if (permalink === $location.path()) {
 					targetState = chapter.state;
 				}
 			}
 		}
 		if (targetState) {
-			$state.go(targetState);
+			$state.go(targetState, {}, {
+				location: false
+			});
 		}
 	});
 
-}]);
+}])
+
+.controller('ContentCtrl', ['$scope', '$anchorScroll', function($scope, $anchorScroll) {
+	$scope.$on('$viewContentLoaded', function(event) {
+		$anchorScroll();
+	})
+}])

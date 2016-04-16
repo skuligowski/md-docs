@@ -10,7 +10,6 @@ angular.module('chapter', [])
 			$scope.expanded = $state.is($scope.chapter.state);			
 			$scope.selectChapter = function() {
 				$scope.expanded = !$scope.expanded;
-				$state.go($scope.chapter.state);
 			}
 		}]
 	}

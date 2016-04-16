@@ -11,12 +11,8 @@ angular.module('book', [
 		controller: ['$scope', function($scope) {
 			$scope.expanded = false;
 			$scope.toggleExpanded = function() {
-				console.log('toggle')
 				$scope.expanded = !$scope.expanded;
 			}
-		}],
-		link: function() {
-			console.log('book')
-		}
+		}]
 	}
 })

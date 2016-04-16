@@ -28,10 +28,10 @@
 	</ul>
 </li></script>
 	<script id="tpl/chapter" type="text/ng-template"><li class="chapter">
-	<a class="title" href="#" ng-click="selectChapter()">{{chapter.title}}</a>
+	<a class="title" ng-href="{{chapter.permalink}}" ng-click="selectChapter()">{{chapter.title}}</a>
 	<ul class="bookmarks" ng-if="expanded">
 		<li class="bookmark" ng-repeat="bookmark in chapter.bookmarks">
-			<a class="title" ng-href="#{{bookmark.ref}}">{{bookmark.title}}</a>
+			<a class="title" ng-href="{{chapter.permalink}}#{{bookmark.ref}}">{{bookmark.title}}</a>
 		</li>			
 	</ul>
 </li></script>
@@ -44,7 +44,7 @@
 		</ul>
 	</div>
 	<div class="content markdown-body scrollable">
-		<div ui-view></div>
+		<div ui-view ng-controller="ContentCtrl"></div>
 	</div>
 </div>
 
