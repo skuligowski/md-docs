@@ -1,40 +1,120 @@
+.push-right(@width) {
+	&:before {
+		content: '';
+		display: inline-block;
+		margin-left: @width;
+	}
+}
 .sidebar {
+	@padding-left: 7px;
 	height: 100%;
 	width: 300px;
-	background: #f9f9f9;
-	padding: 15px;
+	background: #f9f9f9;	
 	a {
-		color: #666;
+		color: #333;
+	}
+	.expander {
+		position: absolute;
+		padding: 5px;
+		display: block;
+
+		&:before {
+			display: inline-block;
+			content: '';
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 6px 0 6px 10px;
+			border-color: transparent transparent transparent #999;
+		}
+
+		&.expanded {
+			margin-left: -2px;
+			margin-top: 1px;
+			&:before {
+				border-width: 10px 6px 0 6px;
+				border-color: #999 transparent transparent transparent;
+			}
+		}
+		&:hover {
+			&:before {
+				border-color: transparent transparent transparent #333;
+			}
+			&.expanded {
+				&:before {
+					border-color: #333 transparent transparent transparent;
+				}
+			}
+		}
+
+
 	}
 	.books,
 	.chapters,
 	.bookmarks {
 		list-style: none;
 	}
+	.books {
+		border-right: 1px solid #eee;
+		min-height: 100%;
+		padding: 15px 0;
+	}
 	.title {
-		display: block;
+		display: inline-block;
 	}
 	.book {
+		display: block;
+		position: relative;
+		.expander {
+			top: 3px;
+			left: @padding-left;
+		}	
 		.title {
+			padding-left: @padding-left + 22px;
+			padding-right: 5px;
 			text-decoration: none;
 			font-size: 1.6rem;
-			line-height: 2.5rem;
+			line-height: 3rem;
+			overflow: hidden;
+			white-space: nowrap;
+			word-wrap: normal;
+			overflow-wrap: normal;
+			text-overflow: ellipsis;	
+			width: 100%;			
 		}
 	}
 	.chapter {
+		display: block;
+		position: relative;
+		.expander {
+			top: 4px;
+			left: @padding-left + 7px;
+		}
 		.title {
-			text-decoration: none;
+			padding-left: @padding-left + 29px;
 			font-size: 1.4rem;
-			margin-left: 20px;
-			line-height: 2.5rem;
+
+			&.active {
+				background: #398df0;
+				color: #fff;
+			}
+
 		}
 	}
 	.bookmark {
+		display: block;
+		position: relative;
 		.title {
-			text-decoration: none;
+			padding-left: @padding-left + 29px;
 			font-size: 1.3rem;
-			margin-left: 40px;
 			line-height: 2.5rem;
+		}
+
+		&.active {
+			background: #398df0;
+			a {
+				color: #fff;
+			}
 		}
 	}
 	&::-webkit-scrollbar {

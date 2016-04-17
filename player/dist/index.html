@@ -22,15 +22,17 @@
 </head>
 <body>
 	<script id="tpl/book" type="text/ng-template"><li class="book">
+	<a class="expander" ng-class="{expanded: expanded}" href="#" ng-click="toggleExpanded()"></a>
 	<a class="title" href="#" ng-click="toggleExpanded()">{{book.title}}</a>
 	<ul class="chapters" ng-if="expanded">
 		<li chapter="chapter" ng-repeat="chapter in book.chapters"></li>
 	</ul>
 </li></script>
 	<script id="tpl/chapter" type="text/ng-template"><li class="chapter">
-	<a class="title" ng-href="{{chapter.permalink}}" ng-click="selectChapter()">{{chapter.title}}</a>
+	<a class="expander" ng-class="{expanded: expanded}" href="#" ng-click="toggleExpanded()"></a>
+	<a class="title" ng-class="{active: isChapterActive(chapter)}" ng-href="{{chapter.permalink}}" ng-click="expand()">{{chapter.title}}</a>
 	<ul class="bookmarks" ng-if="expanded">
-		<li class="bookmark" ng-repeat="bookmark in chapter.bookmarks">
+		<li class="bookmark" ng-class="{active: isBookmarkActive(bookmark)}" ng-repeat="bookmark in chapter.bookmarks">
 			<a class="title" ng-href="{{chapter.permalink}}#{{bookmark.ref}}">{{bookmark.title}}</a>
 		</li>			
 	</ul>
@@ -43,8 +45,8 @@
 			<li book="book" ng-repeat="book in books"></li>
 		</ul>
 	</div>
-	<div class="content markdown-body scrollable">
-		<div ui-view ng-controller="ContentCtrl"></div>
+	<div class="content markdown-body scrollable" scroll-watcher>
+		<div ui-view></div>
 	</div>
 </div>
 

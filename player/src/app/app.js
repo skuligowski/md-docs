@@ -20,8 +20,7 @@ angular.module('docsPlayer', [
   }];
 }])
 
-.config(['$stateProvider', 'fastclickProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, fastclickProvider, $locationProvider, $urlRouterProvider) {
-	//$urlRouterProvider.otherwise('/');
+.config(['$stateProvider', 'fastclickProvider', '$locationProvider', function($stateProvider, fastclickProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$stateProvider
 	.state('main', {
@@ -31,7 +30,27 @@ angular.module('docsPlayer', [
 
 }])
 
-.controller('AppCtrl', ['$scope', 'runtimeStates', '$http', '$location', '$state', function($scope, runtimeStates, $http, $location, $state) {
+.factory('chapterContext', function() {
+	var currentBook, currentChapter;
+	return {
+		set: function(book, chapter) {
+			if (currentChapter)
+				currentChapter.active = false;
+			currentChapter = chapter;
+			currentBook = book;
+			currentChapter.active = true;
+		},
+		getBook: function() {
+			return currentBook;
+		},
+		getChapter: function() {
+			return currentChapter;
+		}
+	}
+})
+
+.controller('AppCtrl', ['$scope', 'runtimeStates', '$http', '$location', '$state', 'chapterContext',
+	function($scope, runtimeStates, $http, $location, $state, chapterContext) {
 
 	$http.get('/docs/books.json').then(function(result) {
 		var books = $scope.books = result.data,
@@ -46,13 +65,20 @@ angular.module('docsPlayer', [
 				chapter.state = 'state'+i+'-'+y;
 				runtimeStates.addState(chapter.state, {
 					url: permalink,
-					templateUrl: chapter.fileUrl
+					templateUrl: chapter.fileUrl,
+					data: {
+						book: book,
+						chapter: chapter
+					}
 				});			
 				if (permalink === $location.path()) {
 					targetState = chapter.state;
 				}
 			}
 		}
+		$scope.$on('$stateChangeSuccess', function(event, toState) {
+			chapterContext.set(toState.data.book, toState.data.chapter);
+		});
 		if (targetState) {
 			$state.go(targetState, {}, {
 				location: false
@@ -62,8 +88,15 @@ angular.module('docsPlayer', [
 
 }])
 
-.controller('ContentCtrl', ['$scope', '$anchorScroll', function($scope, $anchorScroll) {
-	$scope.$on('$viewContentLoaded', function(event) {
-		$anchorScroll();
-	})
+.directive('scrollWatcher', ['$window', '$anchorScroll', function($window, $anchorScroll) {
+	return {
+		link: function(scope, element) {
+			scope.$on('$viewContentLoaded', $anchorScroll);
+			scope.$watch(function() { return $window.location.hash }, function(hash) {
+				if (!hash) {
+					element.scrollTop(0);
+				}
+			});
+		}
+	}
 }])

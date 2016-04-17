@@ -4,7 +4,7 @@
 			<li book="book" ng-repeat="book in books"></li>
 		</ul>
 	</div>
-	<div class="content markdown-body scrollable">
-		<div ui-view ng-controller="ContentCtrl"></div>
+	<div class="content markdown-body scrollable" scroll-watcher>
+		<div ui-view></div>
 	</div>
 </div>
