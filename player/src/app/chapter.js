@@ -12,7 +12,8 @@ angular.module('chapter', [])
 				$scope.expanded = !$scope.expanded;
 			}
 			$scope.isBookmarkActive = function(bookmark) {
-				return $window.location.hash.indexOf(bookmark.ref) > -1;
+				return $window.location.pathname.indexOf($scope.chapter.ref) > -1 
+					&& $window.location.hash.indexOf(bookmark.ref) > -1;
 			}
 			$scope.isChapterActive = function(chapter) {
 				return $window.location.pathname.indexOf(chapter.ref) > -1 && !$window.location.hash;
