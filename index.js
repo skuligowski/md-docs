@@ -1,4 +1,5 @@
-var logger = require('./lib/logger');
+var logger = require('./lib/logger'),
+	path = require('path');
 
 function createTempOutputDir() {
 	var temp = require('temp').track(),
@@ -24,7 +25,7 @@ function startDocs(docsSrcPattern, opts) {
 	};
 	docsBuilder.build(docsSrcPattern, docsDestDir, builderOptions, function() {
 		docsServer.start({
-			playerSrc: 'player/dist',
+			playerSrc: path.join(__dirname, 'player/dist'),
 			docsSrc: docsDestDir,
 			port: options.port || 8000
 		});		
