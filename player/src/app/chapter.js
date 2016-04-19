@@ -12,11 +12,11 @@ angular.module('chapter', [])
 				$scope.expanded = !$scope.expanded;
 			}
 			$scope.isBookmarkActive = function(bookmark) {
-				return $window.location.pathname.indexOf($scope.chapter.ref) > -1 
-					&& $window.location.hash.indexOf(bookmark.ref) > -1;
+				return $window.location.pathname === $scope.chapter.permalink
+					&& $window.location.hash === '#' + bookmark.ref;
 			}
 			$scope.isChapterActive = function(chapter) {
-				return $window.location.pathname.indexOf(chapter.ref) > -1 && !$window.location.hash;
+				return $window.location.pathname === $scope.chapter.permalink && !$window.location.hash;
 			}			
 			$scope.expand = function() {				
 				if (!$scope.expanded && chapterContext.getChapter() === $scope.chapter) {
