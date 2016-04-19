@@ -21,7 +21,8 @@ function startDocs(docsSrcPattern, opts) {
 
 	logger.setDebug(options.debug || false);
 	var builderOptions = {
-		watch: options.watch || false
+		watch: options.watch || false,
+		ignored: options.ignored || /([\/\\]\.|node_modules)/
 	};
 	docsBuilder.build(docsSrcPattern, docsDestDir, builderOptions, function() {
 		docsServer.start({
