@@ -1,6 +1,6 @@
 {
   "name": "md-docs",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Static documentation generator",
   "main": "index.js",
   "repository": "skuligowski/md-docs",
