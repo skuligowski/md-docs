@@ -1,4 +1,4 @@
-md-docs
+md-docs [![Build Status](https://travis-ci.org/skuligowski/md-docs.svg?branch=master)](https://travis-ci.org/skuligowski/md-docs)
 =======
 Markdown docs generator
 
