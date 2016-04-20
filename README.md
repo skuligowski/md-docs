@@ -34,6 +34,18 @@ Markdown files that don't have book and chapter properties in the header are not
 
 After running the script the documentation site is available on: `http://localhost:8000`
 
+## Working with sources
+
+The `md-docs` server can be started with the `watch` option set to `true`. It means that all paths to markdown files are watched contiously for changes (addition, deletion or file update).
+
+```javascript
+var docs = require('md-docs');
+docs.start('src/**/*.md' , {
+    watch: true,
+    port: 8001
+});
+```
+
 ## API
 
 `docs.start(paths, [options])`
@@ -88,8 +100,8 @@ If set to `true` more information about building process is available at the con
 Type: 'String'
 Default: no default
 
-Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* for each markdown file.
+Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* of each markdown file.
 
-If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. Temp directory is cleared after stopping the md-docs process.
+If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. The temporary directory is cleared after the md-docs process is terminated.
 
 
