@@ -9,6 +9,7 @@ Markdown docs generator
 * absolute/relative images inside the document
 * permanent urls for chapters
 * any possible structure of source files
+* automatically generated bookmarks for the chapter
 
 ## Getting Started
 
@@ -30,13 +31,13 @@ chapter: Configuration
 ---
 ```
 
-Markdown files that don't have book and chapter properties in the header are not included in the book but they are still observed by the watcher.
+Markdown files that don't have the book and the chapter properties in the header are not included in the book but they are still observed by the watcher.
 
 After running the script the documentation site is available on: `http://localhost:8000`
 
 ## Working with sources
 
-The `md-docs` server can be started with the `watch` option set to `true`. It means that all paths to markdown files are watched contiously for changes (addition, deletion or file update).
+The `md-docs` server can be started with the `watch` option enabled. It means that all paths to markdown files are watched continously for changes (addition, deletion or file update).
 
 ```javascript
 var docs = require('md-docs');
@@ -50,13 +51,13 @@ docs.start('src/**/*.md' , {
 
 `docs.start(paths, [options])`
 
-Scans all paths to files that contain markdown content, generates the documentation site and runs this site on the http server. 
+Scans all paths to files that contain markdown content, generates the html site and runs this site on the http server. 
 
 ### paths
 
 Type: `Array|String`
 
-Paths to files, or glob patterns that contain markdown content with valid the **yaml header**.
+Paths to files, or glob patterns that contain the markdown content with the valid **yaml header**.
 
 ### options
 
