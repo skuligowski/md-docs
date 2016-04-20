@@ -14,14 +14,14 @@ Markdown docs generator
 
 This short tutorial will walk you through the easiest way of starting to play with `md-docs`. 
 
-To begin with the default configuration, you should point out source markdown files:
+To begin with the default configuration, provide only paths to source markdown files:
 
 ```javascript
 var docs = require('md-docs');
 docs.start('src/**/*.md');
 ```
 
-Each markdown file should start with **the yaml header**. Provide the name of the book to which the markdown file belongs and the name of the chapter.
+Each markdown file should start with the **yaml header**. Provide the name of the book to which the markdown file belongs and the name of the chapter.
 
 ```yaml
 ---
@@ -37,6 +37,8 @@ After running the script the documentation site is available on: `http://localho
 ## API
 
 `docs.start(paths, [options])`
+
+Scans all paths to files that contain markdown content, generates the documentation site and runs this site on the http server. 
 
 ### paths
 
@@ -73,3 +75,21 @@ Type: `String`
 Default: no default
 
 The base directory from which paths to markdown files are to be derived.
+
+#### options.debug
+
+Type: `Boolean`
+Default: `false`
+
+If set to `true` more information about building process is available at the console output.
+
+#### options.docsDestDir
+
+Type: 'String'
+Default: no default
+
+Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* for each markdown file.
+
+If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. Temp directory is cleared after stopping the md-docs process.
+
+
