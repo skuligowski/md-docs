@@ -47,6 +47,22 @@ docs.start('src/**/*.md' , {
 });
 ```
 
+## Using with gulp
+
+The `md-docs` server can be started using gulp task. Check the example of `gulpfile.js`:
+
+```javascript
+var gulp = require('gulp'),
+    mdDocs = require('md-docs');
+
+gulp.task('default', function() {
+    mdDocs.start('./**/*.md', { 
+        port: 8001, 
+        watch: true 
+    });
+});
+```
+
 ## API
 
 `docs.start(paths, [options])`
