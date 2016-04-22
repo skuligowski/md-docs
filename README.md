@@ -53,10 +53,10 @@ The `md-docs` server can be started using gulp task. Check the example of `gulpf
 
 ```javascript
 var gulp = require('gulp'),
-    mdDocs = require('md-docs');
+    docs = require('md-docs');
 
 gulp.task('default', function() {
-    mdDocs.start('./**/*.md', { 
+    docs.start('./**/*.md', { 
         port: 8001, 
         watch: true 
     });
