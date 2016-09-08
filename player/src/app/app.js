@@ -6,17 +6,17 @@ angular.module('docsPlayer', [
 .provider('fastclick', function() {
 	FastClick.attach(document.body);
 	this.$get = function() {
-        return {};
-    };
+		return {};
+	};
 })
 
 .provider('runtimeStates', ['$stateProvider', function runtimeStates($stateProvider) {
-  this.$get = [function() { 
-    return { 
-      addState: function(name, state) { 
-        $stateProvider.state(name, state);
-      }
-    };
+  this.$get = [function() {
+	return {
+	  addState: function(name, state) {
+		$stateProvider.state(name, state);
+	  }
+	};
   }];
 }])
 
@@ -46,11 +46,36 @@ angular.module('docsPlayer', [
 		getChapter: function() {
 			return currentChapter;
 		}
-	}
+	};
 })
 
 .controller('AppCtrl', ['$scope', 'runtimeStates', '$http', '$location', '$state', 'chapterContext',
 	function($scope, runtimeStates, $http, $location, $state, chapterContext) {
+
+	var stateSeqId = 0;
+
+	function makeNonBindable(html) {
+		return '<div ng-non-bindable>' + html + '</div>';
+	}
+
+	function prepareChapter(book, chapter) {
+		chapter.state = 'state' + (++stateSeqId);
+		runtimeStates.addState(chapter.state, {
+			url: chapter.permalink,
+			fileUrl: chapter.fileUrl,
+			data: {
+				book: book,
+				chapter: chapter
+			},
+			templateProvider: ['$q', '$http', function($q, $http) {
+				var defer = $q.defer();
+				$http.get(chapter.fileUrl).then(function(result) {
+					defer.resolve(makeNonBindable(result.data));
+				});
+				return defer.promise;
+			}]
+		});
+	}
 
 	$http.get('/docs/books.json').then(function(result) {
 		var books = $scope.books = result.data,
@@ -60,18 +85,9 @@ angular.module('docsPlayer', [
 			var book = books[i],
 				chapters = book.chapters;
 			for(var y = 0; y < chapters.length; y++) {
-				var chapter = chapters[y],
-					permalink = chapter.permalink;
-				chapter.state = 'state'+i+'-'+y;
-				runtimeStates.addState(chapter.state, {
-					url: permalink,
-					templateUrl: chapter.fileUrl,
-					data: {
-						book: book,
-						chapter: chapter
-					}
-				});			
-				if (permalink === $location.path()) {
+				var chapter = chapters[y];
+				prepareChapter(book, chapter);
+				if (chapter.permalink === $location.path()) {
 					targetState = chapter.state;
 				}
 			}
@@ -98,5 +114,5 @@ angular.module('docsPlayer', [
 				}
 			});
 		}
-	}
-}])
+	};
+}]);
