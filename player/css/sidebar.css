@@ -1,0 +1,144 @@
+.sidebar {	
+	height: 100%;
+	width: 300px;
+	background: #f9f9f9;	
+}
+
+.sidebar a {
+	color: #333;
+}
+
+.sidebar .expander {
+	position: absolute;
+	padding: 5px;
+	display: block;
+}
+
+.sidebar .expander:before {
+	display: inline-block;
+	content: '';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px 0 6px 10px;
+	border-color: transparent transparent transparent #999;
+}
+
+.sidebar .expander.expanded {
+	margin-left: -2px;
+	margin-top: 1px;
+}
+
+.sidebar .expander.expanded:before {
+	border-width: 10px 6px 0 6px;
+	border-color: #999 transparent transparent transparent;
+}
+
+.sidebar .expander:hover:before {
+	border-color: transparent transparent transparent #333;
+}
+
+.sidebar .expander:hover.expanded:before {
+	border-color: #333 transparent transparent transparent;
+}
+
+.sidebar .books,
+.sidebar .chapters,
+.sidebar .bookmarks {
+	list-style: none;
+}
+
+.sidebar .books {
+	border-right: 1px solid #eee;
+	min-height: 100%;
+	padding: 15px 0;
+}
+
+.sidebar .title {
+	display: inline-block;
+}
+
+.sidebar .book {
+	display: block;
+	position: relative;
+}
+
+.sidebar .book .expander {
+	top: 3px;
+	left: 7px;
+}
+
+.sidebar .book .title {
+	padding-left: 29px;
+	padding-right: 5px;
+	text-decoration: none;
+	font-size: 1.6rem;
+	line-height: 3rem;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+	overflow-wrap: normal;
+	text-overflow: ellipsis;	
+	width: 100%;			
+}
+
+.sidebar .chapter {
+	display: block;
+	position: relative;
+}
+
+.sidebar .chapter .expander {
+	top: 4px;
+	left: 14px;
+}
+
+.sidebar .chapter .title {
+	padding-left: 36px;
+	font-size: 1.4rem;
+}
+
+.sidebar .chapter .title.active {
+	background: #398df0;
+	color: #fff;
+}
+
+.sidebar .bookmark {
+	display: block;
+	position: relative;
+}
+
+.sidebar .bookmark .title {
+	padding-left: 36px;
+	font-size: 1.3rem;
+	line-height: 2.5rem;
+}
+
+.sidebar .bookmark.active {
+	background: #398df0;
+}
+
+.sidebar .bookmark.active a {
+	color: #fff;
+}
+
+.sidebar::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-button {
+	display: none;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	min-height: 2rem;
+	background: #d2d2d2;
+	background-clip: padding-box;
+	border: 3px solid #fff;
+	border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+	background: #fff;
+}
+

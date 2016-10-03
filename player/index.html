@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en" ng-app="docsPlayer">
 <head>
 	<base href="/">
 	<title>Documentation</title>
@@ -11,25 +11,23 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="mobile-web-app-capable" content="yes">
-	<link rel="stylesheet" type="text/css" href="/css/index.css">
+	
+	<link rel="stylesheet" type="text/css" href="/vendor/normalize/4.0.0/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/css/layout.css">
+	<link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="/css/markdown.css">
+	<link rel="stylesheet" type="text/css" href="/css/highlight.css">
 
 	<script src="/vendor/jquery/2.1.1/jquery.min.js"></script>
 	<script src="/vendor/angular/1.5.0/angular.min.js"></script>
 	<script src="/vendor/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
 	<script src="/vendor/fastclick/1.0.3/fastclick.min.js"></script>
 
-	<script src="/js/docs-player.js"></script>
+	<script src="/scripts/app.js"></script>
+	<script src="/scripts/book.js"></script>
+	<script src="/scripts/chapter.js"></script>
 </head>
-<body>
-	<%template id="tpl/book" src="app/book.html"%>
-	<%template id="tpl/chapter" src="app/chapter.html"%>
-	<%template id="tpl/empty" src="app/empty.html"%>
-
-	<%include src="app/app.html"%>
-
-	<script>
-		angular.bootstrap(document, ['docsPlayer'], { strictDi: true });
-	</script>
-
+<body ng-controller="AppCtrl">
+	<ui-view />
 </body>
 </html>

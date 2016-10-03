@@ -25,7 +25,7 @@ angular.module('docsPlayer', [
 	$stateProvider
 	.state('main', {
 		url: '/',
-		templateUrl: 'tpl/empty'
+		templateUrl: '/html/app.html'
 	});
 
 }])
@@ -59,9 +59,9 @@ angular.module('docsPlayer', [
 	}
 
 	function prepareChapter(book, chapter) {
-		chapter.state = 'state' + (++stateSeqId);
+		chapter.state = 'main.state' + (++stateSeqId);
 		runtimeStates.addState(chapter.state, {
-			url: chapter.permalink,
+			url: chapter.permalink.substr(1),
 			fileUrl: chapter.fileUrl,
 			data: {
 				book: book,

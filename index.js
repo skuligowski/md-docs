@@ -27,7 +27,7 @@ function startDocs(docsSrcPattern, opts) {
 	};
 	docsBuilder.build(docsSrcPattern, docsDestDir, builderOptions, function() {
 		docsServer.start({
-			playerSrc: path.join(__dirname, 'player/dist'),
+			playerSrc: path.join(__dirname, 'player'),
 			docsSrc: docsDestDir,
 			port: options.port || 8000
 		});		
