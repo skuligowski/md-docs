@@ -1,4 +1,3 @@
-@import (inline) "../vendor/normalize/4.0.0/normalize.css";
 * {
 	box-sizing: border-box;
 	-webkit-font-smoothing: antialiased;
@@ -23,15 +22,10 @@ html {
 .main-view {
 	height: 100%;
 	display: flex;
-	.content {
-		height: 100%;
-		width: 100%;
-		font-size: 1.5rem;
-		padding: 15px;
-	}
 }
-
-@import "sidebar.less";
-@import "highlight.less";
-@import "markdown.less";
-
+.main-view .content {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	padding: 0 15px 15px 15px;
+}

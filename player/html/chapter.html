@@ -1,9 +1,9 @@
 <li class="chapter">
 	<a class="expander" ng-class="{expanded: expanded}" href="#" ng-click="toggleExpanded()"></a>
-	<a class="title" ng-class="{active: isChapterActive(chapter)}" ng-href="{{chapter.permalink}}" ng-click="expand()">{{chapter.title}}</a>
+	<a class="title" ng-class="{active: isChapterActive(chapter)}" ui-sref="{{chapter.state}}" ng-click="expand()">{{chapter.title}}</a>
 	<ul class="bookmarks" ng-if="expanded">
 		<li class="bookmark" ng-class="{active: isBookmarkActive(bookmark)}" ng-repeat="bookmark in chapter.bookmarks">
-			<a class="title" ng-href="{{chapter.permalink}}#{{bookmark.ref}}">{{bookmark.title}}</a>
+			<a class="title" ui-sref="{{chapter.state}}({'#': bookmark.ref})">{{bookmark.title}}</a>
 		</li>			
 	</ul>
 </li>

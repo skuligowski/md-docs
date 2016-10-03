@@ -5,7 +5,7 @@ angular.module('chapter', [])
 			chapter: '='
 		},
 		replace: true,
-		templateUrl: 'tpl/chapter',
+		templateUrl: '/html/chapter.html',
 		controller: ['$scope', 'chapterContext', '$window', function($scope, chapterContext, $window) {
 			$scope.expanded = false;			
 			$scope.toggleExpanded = function() {
