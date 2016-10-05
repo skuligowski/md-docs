@@ -1,5 +1,6 @@
 var log = require('./lib/logger');
 var path = require('path');
+var _ = require('lodash');
 
 function createTempOutputDir() {
 	var temp = require('temp').track();
@@ -23,16 +24,22 @@ function startDocs(src, opts) {
 		ignored: opts.ignored || /([\/\\]\.|node_modules)/,
 		src: src || path.join(process.cwd(), '**/*.md'),
 		docsDestDir: opts.docsDestDir || createTempOutputDir(),
+		theme: opts.theme || 'default',
 		watch: opts.watch || false,
 	};
 	
 	var docsServer = require('./lib/docs-server');
-	var docsBuilder = require('./lib/docs-builder');	
+	var docsBuilder = require('./lib/docs-builder');
+	var docsThemes = require('./lib/docs-themes');
 
 	log.setDebug(options.debug || false);
 	docsBuilder.build(options.src, options.docsDestDir, options, function() {
+		
+		var themesStack = docsThemes.readThemesStack(options.theme);
+		var themePaths = _(themesStack).map('path').value();
+
 		docsServer.start({
-			playerSrc: path.join(__dirname, 'player'),
+			themePaths: themePaths,		
 			docsSrc: options.docsDestDir,
 			port: options.port || 8000
 		});		
