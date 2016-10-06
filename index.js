@@ -46,16 +46,16 @@ function startDocs(src, opts) {
 	});
 }
 
-function createTheme(themeName) {
-	log.info('Creating theme ... ' + themeName);
-}
 
 function runCli() {
-	var argv = require('yargs').argv;
+	var argv = require('yargs')
+		.string('initTheme')
+		.argv;
 	
-	if (argv.createTheme) {
-		return createTheme(argv.createTheme);
-	}	
+	if (argv.initTheme) {
+		var docsThemes = require('./lib/docs-themes');
+		return docsThemes.initTheme(argv.initTheme === true ? null : argv.initTheme);
+	}
 
 	startDocs(argv.src, argv);
 }
