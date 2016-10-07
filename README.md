@@ -10,19 +10,25 @@ Markdown docs generator
 * permanent urls for chapters
 * any possible structure of source files
 * automatically generated bookmarks for the chapter
+* custom themes
 
-## Getting Started
+## Installation
 
-This short tutorial will walk you through the easiest way of starting to play with `md-docs`. 
+`md-docs` can be installed both globally and locally. 
 
-To begin with the default configuration, provide only paths to source markdown files:
+Install `md-docs` globally and you'll have access to the `md-docs` command anywhere on your system.
 
-```javascript
-var docs = require('md-docs');
-docs.start('src/**/*.md');
+```bash
+npm install md-docs -g
 ```
 
-Each markdown file should start with the **yaml header**. Provide the name of the book to which the markdown file belongs and the name of the chapter.
+Local installation allows to use `md-docs` commands directly in the code or inside of gulp or grunt tasks.
+
+## Understanding the concept
+
+The documentation is a collection of many *books*. Each book has a unique title and contains several *chapters*. Every chapter is written in a separate markdown file. *Bookmarks* are autmatically generated in all chapters to simplify navigation.
+
+Each markdown file should start with a **yaml header**. Provide a name of a book to which the markdown file belongs to and a name of a chapter.
 
 ```yaml
 ---
@@ -31,9 +37,25 @@ chapter: Configuration
 ---
 ```
 
-Markdown files that don't have the book and the chapter properties in the header are not included in the book but they are still observed by the watcher.
+Markdown files that don't have the book and the chapter properties in the header are not included in the book
+
+## Getting Started
+
+This short tutorial will walk you through the easiest way of starting to play with `md-docs`. 
+
+Your documentation can contain serveral books. Each book contains several chapters. 
 
 After running the script the documentation site is available on: `http://localhost:8000`
+
+## Code
+
+To begin with the default configuration, provide only paths to source markdown files:
+
+```javascript
+var docs = require('md-docs');
+docs.start('src/**/*.md');
+```
+
 
 ## Working with sources
 
