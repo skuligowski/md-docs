@@ -53,8 +53,11 @@ function runCli() {
 		.argv;
 	
 	if (argv.initTheme) {
-		var docsThemes = require('./lib/docs-themes');
-		return docsThemes.initTheme(argv.initTheme === true ? null : argv.initTheme);
+		return require('./lib/docs-themes').initTheme(argv.initTheme === true ? null : argv.initTheme);
+	}
+
+	if (argv.listThemes) {
+		return require('./lib/docs-themes').listThemes();
 	}
 
 	startDocs(argv.src, argv);
