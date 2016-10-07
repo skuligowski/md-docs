@@ -1,6 +1,5 @@
 var log = require('./lib/logger');
 var path = require('path');
-var _ = require('lodash');
 
 function createTempOutputDir() {
 	var temp = require('temp').track();
@@ -35,8 +34,11 @@ function startDocs(src, opts) {
 	log.setDebug(options.debug || false);
 	docsBuilder.build(options.src, options.docsDestDir, options, function() {
 		
-		var themesStack = docsThemes.readThemesStack(options.theme);
-		var themePaths = _(themesStack).map('path').value();
+		var themePaths = docsThemes.readThemePaths(options.theme);
+		if (!themePaths.length) 
+			return;
+
+		log.info('Using docs theme:', log.colors.green(options.theme));
 
 		docsServer.start({
 			themePaths: themePaths,		
@@ -52,6 +54,8 @@ function runCli() {
 		.string('initTheme')
 		.argv;
 	
+	log.setDebug(argv.debug || false);
+
 	if (argv.initTheme) {
 		return require('./lib/docs-themes').initTheme(argv.initTheme === true ? null : argv.initTheme);
 	}
