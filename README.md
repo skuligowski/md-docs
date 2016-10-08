@@ -45,7 +45,9 @@ optional arguments:
                             Defaults: /([\/\\]\.|node_modules)/
     --list-themes           Lists all embedded themes.
     --init-theme [PARENT_THEME]
-                            Initializes a new theme in a current directory. The new theme may derive content from any embedded theme. Defaults: 'default'.
+                            Initializes a new theme in a current directory. 
+                            The new theme may derive content from any embedded
+                            theme. Defaults: 'default'.
     --debug                 More verbosed output.
 ```
 
