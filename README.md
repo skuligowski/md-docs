@@ -96,8 +96,7 @@ docs.start(['**/*.md'], {
 
 - `options.debug` - (type: `Boolean`, default: `false`) - If set to `true` more information about building process is available at the console output.
 
-- `options.docsDestDir` - (type: 'String', default: no default) - Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* of each markdown file.
-
+- `options.docsDestDir` - (type: 'String', default: no default) - Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* of each markdown file. 
 If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. The temporary directory is cleared after the md-docs process is terminated.
 
 ## Using with gulp
