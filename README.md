@@ -86,11 +86,11 @@ docs.start(['**/*.md'], {
 });
 ```
 
-- src -  (type: `Array|String`, defaults: ['**/*.md']) - Paths to files, or glob patterns that contain the markdown content with the valid **yaml header**
+- src (type: `Array|String`, defaults: ['\*\*/\*.md']) - Paths to files, or glob patterns that contain the markdown content with the valid **yaml header**
 
-- options.port - (type: `Integer`, default: 8000) - The docs server port number
+- options.port (type: `Integer`, default: 8000) - The docs server port number
 
-- options.watch - (type: `Boolean`, default: false) - If set to `true`, updates generated docs whenever watched file patterns (`paths` property) are added, changed or deleted.
+- options.watch (type: `Boolean`, default: false) - If set to `true`, updates generated docs whenever watched file patterns (`paths` property) are added, changed or deleted.
 
 ### paths
 
