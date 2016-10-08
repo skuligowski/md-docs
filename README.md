@@ -2,31 +2,17 @@ md-docs [![Build Status](https://travis-ci.org/skuligowski/md-docs.svg?branch=ma
 =======
 Markdown docs generator
 
-### Features
-
-* book like structure
-* continous watching of markdown files
-* absolute/relative images inside the document
-* permanent urls for chapters
-* any possible structure of source files
-* automatically generated bookmarks for the chapter
-* custom themes
-
 ## Installation
 
 `md-docs` can be installed both globally and locally. 
-
-Install `md-docs` globally and you'll have access to the `md-docs` command anywhere on your system.
 
 ```bash
 npm install md-docs -g
 ```
 
-Local installation allows to use `md-docs` commands directly in the code or inside of gulp or grunt tasks.
+## Docs structure
 
-## Understanding the concept
-
-The documentation is a collection of many *books*. Each book has a unique title and contains several *chapters*. Every chapter is written in a separate markdown file. *Bookmarks* are autmatically generated in all chapters to simplify navigation.
+The documentation is a collection of **books**. Each book has a unique title and contains several **chapters**. Each chapter should be written in a separate markdown file.
 
 Each markdown file should start with a **yaml header**. Provide a name of a book to which the markdown file belongs to and a name of a chapter.
 
@@ -37,15 +23,33 @@ chapter: Configuration
 ---
 ```
 
-Markdown files that don't have the book and the chapter properties in the header are not included in the book
+Markdown files that don't have the book and the chapter properties in the header are not included in the documentation.
 
-## Getting Started
+## Usage
 
-This short tutorial will walk you through the easiest way of starting to play with `md-docs`. 
+```
+md-docs [--help] [--src SRC1[,SRC2]] [--port PORT] [--theme THEME] 
+        [--ignored REGEXP] [--list-themes] [--init-theme [PARENT_THEME]] [--debug] [--watch]
 
-Your documentation can contain serveral books. Each book contains several chapters. 
+optional arguments:
+    --help                  Show this help message and exit.
+    --src SRC1[,SRC2]       Glob patterns pointing to source markdown files
+                            that should be included in generated docs. Defaults: **/*.md
+    --port PORT             Port that will be used to serve the documentation 
+                            on the web. Defaults: 8000
+    --theme THEME           An embedded theme name or a path to a custom theme.
+                            Defaults: default
+    --watch                 Watches markdown files for changes.
+    --ignore REGEXP         Defines files/paths to be ignored when watching. 
+                            The whole relative or absolute path is tested, not just filename. 
+                            Defaults: /([\/\\]\.|node_modules)/
+    --list-themes           Lists all embedded themes.
+    --init-theme [PARENT_THEME]
+                            Initializes a new theme in a current directory. The new theme may derive content from any embedded theme. Defaults: 'default'.
+    --debug                 More verbosed output.
+```
 
-After running the script the documentation site is available on: `http://localhost:8000`
+
 
 ## Code
 
@@ -119,13 +123,6 @@ Type: `Array|String|RegExp`
 Default: `/([\/\\]\.|node_modules)/`
 
 This is [anymatch](https://github.com/es128/anymatch)-compatible definition. Defines files/paths to be ignored. The whole relative or absolute path is tested, not just filename.
-
-#### options.cwd
-
-Type: `String`
-Default: no default
-
-The base directory from which paths to markdown files are to be derived.
 
 #### options.debug
 
