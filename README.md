@@ -51,51 +51,46 @@ optional arguments:
     --debug                 More verbosed output.
 ```
 
+## Getting started with code
 
+Install `md-docs` in your project.
 
-## Code
+```bash
+npm install md-docs --save
+```
 
 To begin with the default configuration, provide only paths to source markdown files:
 
 ```javascript
 var docs = require('md-docs');
-docs.start('src/**/*.md');
+docs.start('docs/**/*.md');
 ```
 
 
-## Working with sources
+## Public API
 
-The `md-docs` server can be started with the `watch` option enabled. It means that all paths to markdown files are watched continously for changes (addition, deletion or file update).
+### docs.start(src, [options])
+
+Runs docs generated from `src` markdown files.
+
+Example with all default options:
 
 ```javascript
-var docs = require('md-docs');
-docs.start('src/**/*.md' , {
-    watch: true,
-    port: 8001
+docs.start(['**/*.md'], {
+    port: 8000,
+    theme: 'default',
+    watch: false,
+    ignored: /([\/\\]\.|node_modules)/,
+    docsDestDir: '/var/temp/asqqwe', // default value depends on the os 
+    debug: false
 });
 ```
 
-## Using with gulp
+- src -  (type: `Array|String`, defaults: ['**/*.md']) - Paths to files, or glob patterns that contain the markdown content with the valid **yaml header**
 
-The `md-docs` server can be started using gulp task. Check the example of `gulpfile.js`:
+- options.port - (type: `Integer`, default: 8000) - The docs server port number
 
-```javascript
-var gulp = require('gulp'),
-    docs = require('md-docs');
-
-gulp.task('default', function() {
-    docs.start('./**/*.md', { 
-        port: 8001, 
-        watch: true 
-    });
-});
-```
-
-## API
-
-`docs.start(paths, [options])`
-
-Scans all paths to files that contain markdown content, generates the html site and runs this site on the http server. 
+- options.watch - (type: `Boolean`, default: false) - If set to `true`, updates generated docs whenever watched file patterns (`paths` property) are added, changed or deleted.
 
 ### paths
 
@@ -107,8 +102,7 @@ Paths to files, or glob patterns that contain the markdown content with the vali
 
 #### options.port
 
-Type: `Integer`
-Default: `8000`
+type: `Integer`, default: `8000`
 
 The docs server port number.
 
@@ -142,4 +136,50 @@ Intermediate directory to which the html content is generated from all found mar
 
 If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. The temporary directory is cleared after the md-docs process is terminated.
 
+## Using with gulp
+
+The `md-docs` server can be started using gulp task. 
+
+```javascript
+var gulp = require('gulp'),
+    docs = require('md-docs');
+
+gulp.task('default', function() {
+    docs.start('./**/*.md');
+});
+```
+
+## Public API
+
+`docs.start(paths, [options])`
+
+Scans all paths to files that contain markdown content, generates the html site and runs this site on the http server. 
+
+Available options:
+- src
+opts.src - 
+```javascript
+{
+    src: ['**/*.md'],
+    port: 8000,
+    theme: 'default',
+    watch: false,
+    ignored: /([\/\\]\.|node_modules)/,
+    docsDestDir: 'some_temp_dir',
+    debug: false,
+};
+```
+
+
+## Working with sources
+
+The `md-docs` server can be started with the `watch` option enabled. It means that all paths to markdown files are watched continously for changes (addition, deletion or file update).
+
+```javascript
+var docs = require('md-docs');
+docs.start('src/**/*.md' , {
+    watch: true,
+    port: 8001
+});
+```
 
