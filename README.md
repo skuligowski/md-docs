@@ -86,18 +86,19 @@ docs.start(['**/*.md'], {
 });
 ```
 
-- `src` - (type: `Array|String`, defaults: ['\*\*/\*.md']) - Paths to files, or glob patterns that contain the markdown content with the valid **yaml header**
+- `src` - (type: `Array|String`, defaults: `['\*\*/\*.md']`) - Glob patterns pointing to source markdown files that should be included in generated docs. 
 
-- `options.port` - (type: `Integer`, default: 8000) - The docs server port number
+- `options.port` - (type: `Integer`, default: `8000`) - A docs server port number.
 
-- `options.watch` - (type: `Boolean`, default: false) - If set to `true`, updates generated docs whenever watched file patterns (`paths` property) are added, changed or deleted.
+- `options.theme` - (type: `String`, default: `'default'`) - An embedded theme name or a path to a custom theme. To list all available embedded themes use `md-docs --list-themes` command.
 
-- `options.ignored` - (type: `Array|String|RegExp`, default: `/([\/\\]\.|node_modules)/`) - This is [anymatch](https://github.com/es128/anymatch)-compatible definition. Defines files/paths to be ignored. The whole relative or absolute path is tested, not just filename.
+- `options.watch` - (type: `Boolean`, default: `false`) - Regenerates the documentaion where  markdown files are added, changed or deleted.
 
-- `options.debug` - (type: `Boolean`, default: `false`) - If set to `true` more information about building process is available at the console output.
+- `options.ignored` - (type: `Array|String|RegExp`, default: `/([\/\\]\.|node_modules)/`) - This is [anymatch](https://github.com/es128/anymatch)-compatible pattern. Defines files/paths that has to be ignored. The whole relative or absolute path is tested, not just filename.
 
-- `options.docsDestDir` - (type: 'String', default: no default) - Intermediate directory to which the html content is generated from all found markdown files. The structure of the that directory is based on *yaml headers* of each markdown file. 
-If the `docsDestDir` option is not specified then the html content is generaded to a system-specific temp directory and served from there. The temporary directory is cleared after the md-docs process is terminated.
+- `options.debug` - (type: `Boolean`, default: `false`) - Verbosed output.
+
+- `options.docsDestDir` - (type: 'String', default: os specific) - An intermediate directory to which the html content is generated from all found markdown files. If the `docsDestDir` option is not specified then html content is generaded to a os-specific temp directory and served from there. The temporary directory is cleared after `md-docs` process is terminated.
 
 ## Using with gulp
 
