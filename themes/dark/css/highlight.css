@@ -1,60 +1,67 @@
 /*
-Date: 24 Fev 2015
-Author: Pedro Oliveira <kanytu@gmail . com>
+  IR_Black style (c) Vasily Mikhailitchenko <vaskas@programica.ru>
 */
 
 .hljs {
-  color: #a9b7c6;
-  background: #282b2e;
   display: block;
   overflow-x: auto;
   padding: 0.5em;
+  background: #333;
+  color: #f8f8f8;
 }
 
-.hljs-number,
-.hljs-literal,
-.hljs-symbol,
-.hljs-bullet {
-  color: #6897BB;
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+  color: #7c7c7c;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-deletion {
-  color: #cc7832;
+.hljs-tag,
+.hljs-name {
+  color: #96cbfe;
 }
 
-.hljs-variable,
-.hljs-template-variable,
-.hljs-link {
-  color: #629755;
-}
-
-.hljs-comment,
-.hljs-quote {
-  color: #808080;
-}
-
-.hljs-meta {
-  color: #bbb529;
+.hljs-attribute,
+.hljs-selector-id {
+  color: #ffffb6;
 }
 
 .hljs-string,
-.hljs-attribute,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
 .hljs-addition {
-  color: #6A8759;
+  color: #a8ff60;
 }
 
-.hljs-section,
+.hljs-subst {
+  color: #daefa3;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #e9c062;
+}
+
 .hljs-title,
-.hljs-type {
-  color: #ffc66d;
+.hljs-section,
+.hljs-type,
+.hljs-doctag {
+  color: #ffffb6;
 }
 
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class {
-  color: #e8bf6a;
+.hljs-symbol,
+.hljs-bullet,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-literal {
+  color: #c6c5fe;
+}
+
+.hljs-number,
+.hljs-deletion {
+  color:#ff73fd;
 }
 
 .hljs-emphasis {
