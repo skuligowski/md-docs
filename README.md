@@ -110,7 +110,7 @@ Install `md-docs` in your project.
 npm install md-docs --save
 ```
 
-To begin with the default configuration, provide only paths to source markdown files:
+To begin with a default configuration, provide only paths to source markdown files:
 
 ```javascript
 var docs = require('md-docs');
