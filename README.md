@@ -51,6 +51,57 @@ optional arguments:
     --debug                 More verbosed output.
 ```
 
+## Example
+
+Providing that you have the following structure of your docs:
+
+```
+example
+├── deployment
+│   ├── config.md
+│   ├── installation.md
+│   ├── os.md
+│   └── test.md
+└── installation
+    ├── faq.md
+    ├── intro.md
+    ├── requirements.ms
+    └── steps.md
+```
+
+### Running documentation on local port 8001
+
+```
+$ cd example
+$ md-docs --port 8001
+Writing books.json
+Using docs theme: default
+Docs server listening on port 8001
+```
+
+### List all availables themes
+
+```
+$ cd example
+$ md-docs --list-themes
+dark (parent: default)
+default
+```
+
+### Creating a custom theme which derives from 'dark'
+```
+$ cd example
+$ mkdir my_theme
+$ cd my_theme
+$ md-docs --init-theme dark
+Initializing theme using parents: dark,default
+$ cd ..
+$ md-docs --port 8001 --theme my_theme
+Writing books.json
+Using docs theme: my_theme
+Docs server listening on port 8001
+```
+
 ## Getting started with code
 
 Install `md-docs` in your project.
