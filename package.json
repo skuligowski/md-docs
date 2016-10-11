@@ -1,6 +1,6 @@
 {
   "name": "md-docs",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "The documentation site generator",
   "main": "index.js",
   "repository": "skuligowski/md-docs",
