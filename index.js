@@ -16,7 +16,8 @@ function createTempOutputDir() {
 function startDocs(src, opts) {
 
 	opts = opts || {};
-	
+	src = typeof src === 'string' ? src.split(',') : src;
+
 	var options = {
 		port: opts.port || 8000,
 		debug: opts.debug || false,
