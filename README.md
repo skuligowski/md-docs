@@ -25,6 +25,18 @@ chapter: Configuration
 
 Markdown files that don't have the book and the chapter properties in the header are not included in the documentation.
 
+### Chapter yaml header options
+
+- `book` - (type: `String`, required) - A name of a book to which the chapter belongs to.
+
+- `chapter` - (type: `String`, required) - A name of the chapter.
+
+- `permalink` - (type: `String`, optional) - Custom, friendly url for the chapter. By default the url is generated from the name of the book and chapter.
+
+- `default` - (type: `Boolean`, optional) - When set to true, the chapter will be presented as first after entering the site.
+
+- `order` - (type: `String`, optional) - This field is used to sort chapters in a book.
+
 ## Usage
 
 ```
