@@ -3,17 +3,14 @@
 var fs = require('fs'),
 	assert = require('assert'),
 	path = require('path'),
-	bookshelf = require('./../lib/bookshelf');
+	bookshelf = require('./../lib/bookshelf'),
+	q = require('q');
 
-function readFile(filename) {
-	var filePath = path.resolve(filename);
-	return fs.readFileSync(filePath).toString('utf-8');
-}
-
-it('should add chapter to the book', function (cb) {		
+it('should add chapter to the book', function () {		
 	var b = bookshelf();
-	b.addChapter(path.resolve('test/fixtures/source/test1.md'));
-	b.addChapter(path.resolve('test/fixtures/source/test2.md'));
-	b.addChapter(path.resolve('test/fixtures/source/test1.md'));
-	cb();	
+	return q.allSettled([
+		b.addChapter(path.resolve('test/fixtures/source/test1.md')),
+		b.addChapter(path.resolve('test/fixtures/source/test2.md')),
+		b.addChapter(path.resolve('test/fixtures/source/test1.md')),
+	]);
 });

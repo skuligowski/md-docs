@@ -21,13 +21,12 @@ angular.module('docsPlayer', [
 }])
 
 .config(['$stateProvider', 'fastclickProvider', '$locationProvider', function($stateProvider, fastclickProvider, $locationProvider) {
-	$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode(true);	
 	$stateProvider
 	.state('main', {
 		url: '/',
 		templateUrl: '/html/empty.html'
 	});
-
 }])
 
 .factory('chapterContext', function() {
@@ -62,6 +61,7 @@ angular.module('docsPlayer', [
 		chapter.state = 'state' + (++stateSeqId);
 		runtimeStates.addState(chapter.state, {
 			url: chapter.permalink,
+			default: chapter.default,
 			fileUrl: chapter.fileUrl,
 			data: {
 				book: book,
@@ -78,8 +78,9 @@ angular.module('docsPlayer', [
 	}
 
 	$http.get('/docs/books.json').then(function(result) {
-		var books = $scope.books = result.data,
-			targetState = null;
+		var books = $scope.books = result.data;
+		var defaultState = null;
+		var targetState = null;
 
 		for(var i = 0; i < books.length; i++) {
 			var book = books[i],
@@ -87,18 +88,24 @@ angular.module('docsPlayer', [
 			for(var y = 0; y < chapters.length; y++) {
 				var chapter = chapters[y];
 				prepareChapter(book, chapter);
+				if (chapter.default) {
+					defaultState = chapter.state;
+				}
 				if (chapter.permalink === $location.path()) {
 					targetState = chapter.state;
 				}
 			}
 		}
 		$scope.$on('$stateChangeSuccess', function(event, toState) {
-			chapterContext.set(toState.data.book, toState.data.chapter);
+			if (toState.data) {
+				chapterContext.set(toState.data.book, toState.data.chapter);
+			}
 		});
+		if (!targetState && defaultState) {
+			$state.go(defaultState, {}, { location: true });
+		}
 		if (targetState) {
-			$state.go(targetState, {}, {
-				location: false
-			});
+			$state.go(targetState, {}, { location: false });
 		}
 	});
 
