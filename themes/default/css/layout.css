@@ -30,3 +30,8 @@ html {
 	font-size: 1.5rem;
 	padding: 0 15px 15px 15px;
 }
+
+.accelerate {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
