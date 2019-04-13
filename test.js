@@ -1,5 +1,5 @@
 'use strict';
-var docs = require('./index');
+const docs = require('./index');
 docs.start('test/**/*.md', {
 	debug: true,
 	port: 8000,

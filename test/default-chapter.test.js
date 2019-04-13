@@ -1,17 +1,16 @@
 'use strict';
 
-var assert = require('assert');
-var path = require('path');
-var bookshelf = require('./../lib/bookshelf');
-var q = require('q');
+const assert = require('assert');
+const path = require('path');
+const bookshelf = require('./../lib/bookshelf');
 
 function loadChapter(file) {
-	var b = bookshelf();
+	const b = bookshelf();
 	return b.addChapter(path.resolve(file))
-	.then(function() {
-		var book = b.get()['markdown-first'];
-		return book.chapters[0];
-	});
+		.then(function() {
+			const book = b.get()['markdown-first'];
+			return book.chapters[0];
+		});
 }
 
 describe('should mark chapter as default', function() {
