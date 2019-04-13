@@ -1,5 +1,5 @@
 language: node_js
 node_js:
-  - 6.4
+  - 8.2.1
   - 10.15.3
   - 11.14.0
