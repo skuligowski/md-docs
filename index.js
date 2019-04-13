@@ -1,12 +1,13 @@
-var log = require('./lib/logger');
-var path = require('path');
+const log = require('./lib/logger');
+const path = require('path');
 
 function createTempOutputDir() {
-	var temp = require('temp').track();
-	var tempDir = temp.mkdirSync('docsplayer');
+	const temp = require('temp').track();
+	const tempDir = temp.mkdirSync('docsplayer');
 
 	process.on('SIGINT', function() {
-		temp.cleanupSync();			
+		log.info('Stopped: cleaning temp dir');
+		temp.cleanupSync();
 		process.exit();
 	});
 
@@ -18,7 +19,7 @@ function startDocs(src, opts) {
 	opts = opts || {};
 	src = typeof src === 'string' ? src.split(',') : src;
 
-	var options = {
+	const options = {
 		port: opts.port || 8000,
 		debug: opts.debug || false,
 		ignored: opts.ignored || /([\/\\]\.|node_modules)/,
@@ -28,30 +29,30 @@ function startDocs(src, opts) {
 		watch: opts.watch || false,
 	};
 	
-	var docsServer = require('./lib/docs-server');
-	var docsBuilder = require('./lib/docs-builder');
-	var docsThemes = require('./lib/docs-themes');
+	const docsServer = require('./lib/docs-server');
+	const docsBuilder = require('./lib/docs-builder');
+	const docsThemes = require('./lib/docs-themes');
 
 	log.setDebug(options.debug || false);
-	docsBuilder.build(options.src, options.docsDestDir, options, function() {
-		
-		var themePaths = docsThemes.readThemePaths(options.theme);
+
+	docsBuilder.build(options.src, options.docsDestDir, options, () => {
+		const themePaths = docsThemes.readThemePaths(options.theme);
 		if (!themePaths.length) 
 			return;
 
 		log.info('Using docs theme:', log.colors.green(options.theme));
 
 		docsServer.start({
-			themePaths: themePaths,		
+			themePaths: themePaths,
 			docsSrc: options.docsDestDir,
-			port: options.port || 8000
-		});		
+			port: options.port || 8000,
+		});
 	});
 }
 
 
 function runCli() {
-	var argv = require('yargs')
+	const argv = require('yargs')
 		.string('initTheme')
 		.argv;
 	
