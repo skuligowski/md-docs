@@ -29,7 +29,6 @@
     "yargs": "13.2.2"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
     "@types/express": "^4.16.1",
     "@types/q": "^1.5.2",
     "assert": "^1.4.1",
