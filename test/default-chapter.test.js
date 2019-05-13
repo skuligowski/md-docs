@@ -15,25 +15,22 @@ function loadChapter(file) {
 
 describe('should mark chapter as default', function() {
 	it('when default is set to true', function () {
-		loadChapter('test/fixtures/source/default-chapter/default-chapter.md')
-		.then(function() {
-			assert.equal(true, chapter.default);
+		loadChapter('test/fixtures/source/default-chapter/default-chapter.md').then(chapter => {
+			assert.strictEqual(true, chapter.default);
 		});
 	});
 });
 
 describe('should not mark chapter as default', function () {
 	it('when default is set to false', function() {
-		loadChapter('test/fixtures/source/default-chapter/default-chapter-false.md')
-		.then(function() {
-			assert.equal(false, chapter.default);
+		loadChapter('test/fixtures/source/default-chapter/default-chapter-false.md').then(chapter => {
+			assert.strictEqual(false, chapter.default);
 		});
 	});
 
 	it('when default is not present', function() {
-		loadChapter('test/fixtures/source/default-chapter/default-chapter-missing.md')
-		.then(function() {
-			assert.equal(false, chapter.default);
+		loadChapter('test/fixtures/source/default-chapter/default-chapter-missing.md').then(chapter => {
+			assert.strictEqual(false, chapter.default);
 		});
 	});
 });
