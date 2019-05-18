@@ -1,0 +1,7 @@
+{
+  // static type checking for js
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true
+  }
+}

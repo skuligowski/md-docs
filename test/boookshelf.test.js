@@ -1,13 +1,11 @@
 'use strict';
 
-var fs = require('fs'),
-	assert = require('assert'),
-	path = require('path'),
-	bookshelf = require('./../lib/bookshelf'),
-	q = require('q');
+const path = require('path');
+const bookshelf = require('./../lib/bookshelf');
+const q = require('q');
 
 it('should add chapter to the book', function () {		
-	var b = bookshelf();
+	const b = bookshelf();
 	return q.allSettled([
 		b.addChapter(path.resolve('test/fixtures/source/test1.md')),
 		b.addChapter(path.resolve('test/fixtures/source/test2.md')),
