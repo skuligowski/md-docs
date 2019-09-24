@@ -179,5 +179,5 @@ gulp.task('default', function() {
 
 ## Changelog
 
-See the changelog file to get more info about release changes:
-[https://github.com/skuligowski/md-docs/blob/master/README.md](https://github.com/skuligowski/md-docs/blob/master/README.md)
+See the [CHANGELOG.md](https://github.com/skuligowski/md-docs/blob/master/CHANGELOG.md) file to get more info about release changes.
+
