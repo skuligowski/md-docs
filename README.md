@@ -175,3 +175,9 @@ gulp.task('default', function() {
     docs.start('./**/*.md');
 });
 ```
+
+
+## Changelog
+
+See the changelog file to get more info about release changes:
+[https://github.com/skuligowski/md-docs/blob/master/README.md](https://github.com/skuligowski/md-docs/blob/master/README.md)

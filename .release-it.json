@@ -1,0 +1,16 @@
+{
+  "git": {
+    "tagName": "v${version}",
+    "commitMessage": "Release v${version}"
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_ACCESS_TOKEN"
+  },
+  "npm": {
+    "publish": true
+  },
+  "hooks": {
+    "after:release": "echo Successfully released v${version}."
+  }
+}
