@@ -10,8 +10,7 @@
   "npm": {
     "publish": true
   },
-  "use": "pkg.version",
-  "scripts": {
-    "afterRelease": "echo Successfully released v${version}."
+  "hooks": {
+    "after:release": "echo Successfully released v${version}."
   }
 }
