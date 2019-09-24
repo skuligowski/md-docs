@@ -36,7 +36,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "release": "release-it --dry-run"
+    "release": "release-it"
   },
   "bin": {
     "md-docs": "cli.js"
