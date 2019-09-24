@@ -3,34 +3,34 @@
 const assert = require('assert');
 const createRefsStore = require('./../lib/refs-store');
 
-it('should return slugged title', function (cb) {		
+it('should return slugged title', cb => {
 	const uniqueRefs = createRefsStore();
 	const ref = uniqueRefs.create('The test');
-	assert.equal('the-test', ref);
+	assert.strictEqual('the-test', ref);
 	cb();
 });
 
-it('should generate next uniqe ref id', function (cb) {		
+it('should generate next uniqe ref id', cb => {
 	const uniqueRefs = createRefsStore();
 	
 	uniqueRefs.nextUnique('The test');
 	uniqueRefs.nextUnique('The test');
 	uniqueRefs.nextUnique('The test');
 	const ref = uniqueRefs.nextUnique('The test');
-	assert.equal('the-test-4', ref);
+	assert.strictEqual('the-test-4', ref);
 	cb();
 });
 
-it('should alow same refs for different namespaces', function (cb) {		
+it('should alow same refs for different namespaces', cb => {
 	const uniqueRefs = createRefsStore();
 	
 	const refA = uniqueRefs.nextUnique('The test', 'a');
 	const refB = uniqueRefs.nextUnique('The test', 'b');
-	assert.equal(refA, refB);
+	assert.strictEqual(refA, refB);
 	cb();
 });
 
-it('should generate next unique refs for different namespaces', function (cb) {		
+it('should generate next unique refs for different namespaces', cb => {
 	const uniqueRefs = createRefsStore();
 	
 	uniqueRefs.nextUnique('The first phrase', 'a');
@@ -38,26 +38,26 @@ it('should generate next unique refs for different namespaces', function (cb) {
 	uniqueRefs.nextUnique('The second phrase', 'b');
 	const refB = uniqueRefs.nextUnique('The second phrase', 'b');
 	
-	assert.equal('the-first-phrase-2', refA);
-	assert.equal('the-second-phrase-2', refB);
+	assert.strictEqual('the-first-phrase-2', refA);
+	assert.strictEqual('the-second-phrase-2', refB);
 	cb();
 });
 
-it('should return undefined when unique exists', function (cb) {		
+it('should return undefined when unique exists', cb => {
 	const uniqueRefs = createRefsStore();
 	
 	const refA = uniqueRefs.unique('The test', 'a');
 	const refB = uniqueRefs.unique('The test', 'a');
-	assert.equal(refB, undefined);
+	assert.strictEqual(refB, undefined);
 	cb();	
 });
 
-it('should return unique after unlinking', function (cb) {		
+it('should return unique after unlinking', cb => {
 	const uniqueRefs = createRefsStore();
 	
 	const refA = uniqueRefs.unique('The test', 'a');
 	uniqueRefs.unlinkRef('the-test', 'a');
 	const refB = uniqueRefs.unique('The test', 'a');
-	assert.equal(refB, 'the-test');
+	assert.strictEqual(refB, 'the-test');
 	cb();	
 });
