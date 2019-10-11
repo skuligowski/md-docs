@@ -40,7 +40,7 @@ Markdown files that don't have the book and the chapter properties in the header
 ## Usage
 
 ```
-md-docs [--help] [--src SRC1[,SRC2]] [--port PORT] [--theme THEME] 
+md-docs [--help] [--src SRC1[,SRC2]] [--port PORT] [--base-href HREF] [--theme THEME] 
         [--ignored REGEXP] [--list-themes] [--init-theme [PARENT_THEME]] [--debug] [--watch]
 
 optional arguments:
@@ -49,6 +49,7 @@ optional arguments:
                             that should be included in generated docs. Defaults: **/*.md
     --port PORT             Port that will be used to serve the documentation 
                             on the web. Defaults: 8000
+    --base-href HREF        Base URL prepended to the documentation paths
     --theme THEME           An embedded theme name or a path to a custom theme.
                             Defaults: default
     --watch                 Watches markdown files for changes.

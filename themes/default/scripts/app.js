@@ -25,7 +25,7 @@ angular.module('docsPlayer', [
 	$stateProvider
 	.state('main', {
 		url: '/',
-		templateUrl: '/html/empty.html'
+		templateUrl: 'html/empty.html'
 	});
 }])
 
@@ -77,7 +77,7 @@ angular.module('docsPlayer', [
 		});
 	}
 
-	$http.get('/docs/books.json').then(function(result) {
+	$http.get('docs/books.json').then(function(result) {
 		var books = $scope.books = result.data;
 		var defaultState = null;
 		var targetState = null;

@@ -7,7 +7,7 @@ angular.module('book', [
 			book: '='
 		},
 		replace: true,
-		templateUrl: '/html/book.html',
+		templateUrl: 'html/book.html',
 		controller: ['$scope', 'chapterContext', function($scope, chapterContext) {
 			$scope.expanded = false;
 			$scope.toggleExpanded = function() {
