@@ -164,6 +164,8 @@ docs.start(['**/*.md'], {
 
 - `options.docsDestDir` - (type: 'String', default: os specific) - An intermediate directory to which the html content is generated from all found markdown files. If the `docsDestDir` option is not specified then html content is generaded to a os-specific temp directory and served from there. The temporary directory is cleared after `md-docs` process is terminated.
 
+- `options.baseHref` - (type: 'String', default: '/') - Base URL prepended to the documentation paths. 
+
 ## Using with gulp
 
 The `md-docs` server can be started using gulp task. 
@@ -177,6 +179,11 @@ gulp.task('default', function() {
 });
 ```
 
+## Markdown
+
+### Links
+
+Relative links to other chapters in markedown documents are allowed. *Important:* realtive URL must not have a forward slash at the begining.
 
 ## Changelog
 
