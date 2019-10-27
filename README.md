@@ -185,6 +185,10 @@ gulp.task('default', function() {
 
 Relative links to other chapters in markedown documents are allowed. *Important:* realtive URL must not have a forward slash at the begining.
 
+```
+[Application / Intro](application/intro)
+```
+
 ## Changelog
 
 See the [CHANGELOG.md](https://github.com/skuligowski/md-docs/blob/master/CHANGELOG.md) file to get more info about release changes.
