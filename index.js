@@ -27,6 +27,7 @@ function startDocs(src, opts) {
 		docsDestDir: opts.docsDestDir || createTempOutputDir(),
 		theme: opts.theme || 'default',
 		watch: opts.watch || false,
+		baseHref: opts.baseHref || '/',
 	};
 	
 	const docsServer = require('./lib/docs-server');
@@ -46,6 +47,7 @@ function startDocs(src, opts) {
 			themePaths: themePaths,
 			docsSrc: options.docsDestDir,
 			port: options.port || 8000,
+			baseHref: options.baseHref,
 		});
 	});
 }

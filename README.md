@@ -40,7 +40,7 @@ Markdown files that don't have the book and the chapter properties in the header
 ## Usage
 
 ```
-md-docs [--help] [--src SRC1[,SRC2]] [--port PORT] [--theme THEME] 
+md-docs [--help] [--src SRC1[,SRC2]] [--port PORT] [--base-href HREF] [--theme THEME] 
         [--ignored REGEXP] [--list-themes] [--init-theme [PARENT_THEME]] [--debug] [--watch]
 
 optional arguments:
@@ -49,6 +49,7 @@ optional arguments:
                             that should be included in generated docs. Defaults: **/*.md
     --port PORT             Port that will be used to serve the documentation 
                             on the web. Defaults: 8000
+    --base-href HREF        Base URL prepended to the documentation paths
     --theme THEME           An embedded theme name or a path to a custom theme.
                             Defaults: default
     --watch                 Watches markdown files for changes.
@@ -163,6 +164,8 @@ docs.start(['**/*.md'], {
 
 - `options.docsDestDir` - (type: 'String', default: os specific) - An intermediate directory to which the html content is generated from all found markdown files. If the `docsDestDir` option is not specified then html content is generaded to a os-specific temp directory and served from there. The temporary directory is cleared after `md-docs` process is terminated.
 
+- `options.baseHref` - (type: 'String', default: '/') - Base URL prepended to the documentation paths. 
+
 ## Using with gulp
 
 The `md-docs` server can be started using gulp task. 
@@ -176,6 +179,15 @@ gulp.task('default', function() {
 });
 ```
 
+## Markdown
+
+### Links
+
+Relative links to other chapters in markedown documents are allowed. *Important:* realtive URL must not have a forward slash at the begining.
+
+```
+[Application / Intro](application/intro)
+```
 
 ## Changelog
 
