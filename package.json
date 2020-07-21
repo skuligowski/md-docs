@@ -31,11 +31,12 @@
     "@types/express": "4.16.1",
     "@types/mocha": "5.2.6",
     "@types/q": "1.5.2",
+    "esm": "^3.2.25",
     "mocha": "8.0.1",
     "release-it": "13.6.5"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha -r esm",
     "release": "release-it"
   },
   "bin": {
