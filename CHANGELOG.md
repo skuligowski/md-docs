@@ -5,7 +5,7 @@ This document lists breaking changes for each major release and sums up other ch
 See the GitHub Releases page:
 [https://github.com/skuligowski/md-docs/releases](https://github.com/skuligowski/md-docs/releases)
 
-## v1.2.0
+## v1.2.1
 
 - Security vulnerabilities fixes
 
