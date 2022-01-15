@@ -18,7 +18,7 @@
     "fs-extra": "7.0.1",
     "highlight.js": "9.15.6",
     "lodash": "^4.17.19",
-    "marked": "0.7.0",
+    "marked": "4.0.10",
     "q": "1.5.1",
     "slug": "1.1.0",
     "stack-trace": "0.0.10",
