@@ -14,7 +14,7 @@
     "chalk": "2.4.2",
     "chokidar": "3.4.0",
     "compression": "1.7.4",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "fs-extra": "7.0.1",
     "highlight.js": "9.15.6",
     "lodash": "^4.17.19",
